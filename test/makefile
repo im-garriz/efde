@@ -6,8 +6,8 @@
 #           to create the executable
 ##############################################################################
 
-TARGET = test.out
-SRC_FILES = src/try_test.cpp 
+TARGET = test
+SRC_FILES = functional_test.cpp 
 
 ##############################################################################
 # Compiler specifications
