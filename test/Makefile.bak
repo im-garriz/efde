@@ -66,6 +66,3 @@ clean_o:
 
 clean: clean_o
 	$(RM) $(TARGET)
-
-functional_test_1.o: functional_test_1.hpp
-functional_test_2.o: functional_test_2.hpp
