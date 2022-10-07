@@ -8,7 +8,7 @@
 
 TARGET = test.out
 SRC_FILES = unitTestConfig.cpp test_DifferentialEvolution.cpp ../DifferentialEvolution.cpp \
-			../fitnessFunctions.cpp
+			../utils/fitnessFunctions.cpp
 
 ##############################################################################
 # Compiler specifications
