@@ -1,6 +1,6 @@
 #!/bin/bash
 
-cd test
+cd src/test
 clear
 make clean
 make
