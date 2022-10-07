@@ -1,29 +1,43 @@
 #include "functional_test_1.hpp"
 
-int _functional_test_1_1(void) {
-    return 5;
+
+float fitness(std::vector<float> individual)
+{
+    float sum = 0;
+
+    for (auto it = individual.begin(); it != individual.end(); ++it)
+        sum += *it;
+
+    return sum;
 }
 
-int _functional_test_1_2(void) {
-    return 5;
+
+BOOST_AUTO_TEST_SUITE(functionalTest1)
+
+BOOST_AUTO_TEST_CASE(test_fitness_function) {
+
+    //float individual[] = {1, 2, 3, 4};
+    std::vector<float> individual = {1, 2, 3, 4};
+
+    BOOST_CHECK_EQUAL(fitness(individual), 10.);
 }
 
-int _functional_test_1_3(void) {
-    return 8;
-}
+BOOST_AUTO_TEST_CASE(test_trivial_all_0_problem_converges) {
 
-BOOST_AUTO_TEST_SUITE(functional_test_1_name)
+    
+    float (*pointer_to_fitness)(std::vector<float>) = fitness;
+    de = DiferentialEvolution(pointer_to_fitness, 10);
 
-BOOST_AUTO_TEST_CASE(functional_test_1_name_1) {
-    BOOST_CHECK_EQUAL(_functional_test_1_1(), 5);
-}
+    std::vector<float> result;
+    float result_fitness;
 
-BOOST_AUTO_TEST_CASE(functional_test_1_name_2) {
-    BOOST_CHECK_EQUAL(_functional_test_1_2(), 5);
-}
-
-BOOST_AUTO_TEST_CASE(functional_test_1_name_3) {
-    BOOST_CHECK_EQUAL(_functional_test_1_3(), 5);
+    result = de.optimize();
+    result_fitness = fitness(result);
+    
+    BOOST_CHECK_CLOSE(result_fitness, 0f, 0.01f);
+  
+    for (auto it=result.begin(); it!=result.end(); it++)
+        BOOST_CHECK_CLOSE(*it, 0f, 0.001f);
 }
 
 BOOST_AUTO_TEST_SUITE_END()
