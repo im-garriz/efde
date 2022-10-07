@@ -3,7 +3,7 @@ FROM ubuntu:latest
 
 RUN apt-get update
 RUN apt-get -y upgrade
-RUN apt-get -y install build-essential wget git
+RUN apt-get -y install build-essential wget git cmake
 
 RUN wget https://boostorg.jfrog.io/artifactory/main/release/1.80.0/source/boost_1_80_0.tar.bz2
 RUN tar --bzip2 -xf boost_1_80_0.tar.bz2
