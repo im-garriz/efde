@@ -6,7 +6,7 @@
 #           to create the executable
 ##############################################################################
 
-TARGET = test
+TARGET = test.out
 SRC_FILES = functional_test_config.cpp functional_test_1.cpp functional_test_2.cpp
 
 ##############################################################################

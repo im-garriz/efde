@@ -4,4 +4,4 @@ cd src/test
 clear
 make clean
 make
-./test
+./test.out
