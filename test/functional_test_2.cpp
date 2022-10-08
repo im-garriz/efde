@@ -15,11 +15,11 @@ int _functional_test_2_3(void) {
 BOOST_AUTO_TEST_SUITE(functional_test_2_name)
 
 BOOST_AUTO_TEST_CASE(functional_test_2_name_1) {
-    BOOST_CHECK_EQUAL(_functional_test_2_1(), 8);
+    BOOST_CHECK_EQUAL(_functional_test_2_1(), 5);
 }
 
 BOOST_AUTO_TEST_CASE(functional_test_2_name_2) {
-    BOOST_CHECK_EQUAL(_functional_test_2_2(), 8);
+    BOOST_CHECK_EQUAL(_functional_test_2_2(), 5);
 }
 
 BOOST_AUTO_TEST_CASE(functional_test_2_name_3) {

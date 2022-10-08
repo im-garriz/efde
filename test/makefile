@@ -7,7 +7,8 @@
 ##############################################################################
 
 TARGET = test.out
-SRC_FILES = functional_test_config.cpp functional_test_1.cpp functional_test_2.cpp
+SRC_FILES = functional_test_config.cpp functional_test_1.cpp functional_test_2.cpp \
+			../src/utils/fitnessFunctions.cpp ../src/DifferentialEvolution.cpp
 
 ##############################################################################
 # Compiler specifications

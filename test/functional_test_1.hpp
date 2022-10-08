@@ -5,9 +5,9 @@
 #include "functional_test_config.hpp"
 
 #include <vector>
+#include <iostream>
 
-#include "../src/DiferentialEvolution.hpp"
-
-float fitness(std::vector<float>);
+#include "../src/DifferentialEvolution.hpp"
+#include "../src/utils/fitnessFunctions.hpp"
 
 #endif /* FUNCTIONAL_TEST_1_HPP */
