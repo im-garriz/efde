@@ -37,6 +37,7 @@ class DifferentialEvolution {
         int m_individualLen;
         int m_nOfGenerations;
         float m_F;
+        float m_CR;
 
         std::vector<std::vector<float>> m_population;
         std::vector<int> m_individualIdxs;
@@ -57,6 +58,8 @@ class DifferentialEvolution {
         void performGenerationOnIndividual(int individualIdx);
         int getRandomIndividualIdx(std::vector<int>* unselectable_individuals);
         void mutateIndividual(int individualIdx, std::vector<float>* mutated);
+        void mateIndividual(int individualIdx, std::vector<float>* mutated);
+        void selectDescendant(int individualIdx, std::vector<float>* variatedIndividual);
 
 };
 
