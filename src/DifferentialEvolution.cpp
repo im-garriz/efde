@@ -108,7 +108,7 @@ void DifferentialEvolution::performGenerationOnIndividual(int individualIdx) {
 
 }
 
-int DifferentialEvolution::getIndividualIdx(std::vector<int>* unselectableIndividuals) {
+int DifferentialEvolution::getRandomIndividualIdx(std::vector<int>* unselectableIndividuals) {
     auto n_it = Random::get(m_individualIdxs.begin(), m_individualIdxs.end());
     while(std::find((*unselectableIndividuals).begin(), (*unselectableIndividuals).end(), *n_it) != (*unselectableIndividuals).end()) {
         n_it = Random::get(m_individualIdxs.begin(), m_individualIdxs.end());
@@ -124,9 +124,9 @@ void DifferentialEvolution::mutateIndividual(int individualIdx, std::vector<floa
     unselectableIndividuals.reserve(4);
     unselectableIndividuals.push_back(individualIdx);
 
-    int p = getIndividualIdx(&unselectableIndividuals);
-    int q = getIndividualIdx(&unselectableIndividuals);
-    int r = getIndividualIdx(&unselectableIndividuals);
+    int p = getRandomIndividualIdx(&unselectableIndividuals);
+    int q = getRandomIndividualIdx(&unselectableIndividuals);
+    int r = getRandomIndividualIdx(&unselectableIndividuals);
 
     for (int i=0; i<m_individualLen; i++)
         mutated->push_back(m_population[r][i] + m_F * (m_population[p][i] - m_population[q][i]));

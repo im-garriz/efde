@@ -55,7 +55,7 @@ class DifferentialEvolution {
         void initializePopulation();
         void performGeneration();
         void performGenerationOnIndividual(int individualIdx);
-        int getIndividualIdx(std::vector<int>* unselectable_individuals);
+        int getRandomIndividualIdx(std::vector<int>* unselectable_individuals);
         void mutateIndividual(int individualIdx, std::vector<float>* mutated);
 
 };

@@ -35,11 +35,11 @@ BOOST_AUTO_TEST_CASE(test_get_individual_idx) {
     de->initializePopulation();
 
     std::vector<int> unselectableIndividuals{0};
-    int n1 = de->getIndividualIdx(&unselectableIndividuals); // 25
+    int n1 = de->getRandomIndividualIdx(&unselectableIndividuals); // 25
     auto p = std::find(unselectableIndividuals.begin(), unselectableIndividuals.end(), n1);
     BOOST_CHECK_EQUAL(*p, n1);
 
-    int n2 = de->getIndividualIdx(&unselectableIndividuals); // 34
+    int n2 = de->getRandomIndividualIdx(&unselectableIndividuals); // 34
     p = std::find(unselectableIndividuals.begin(), unselectableIndividuals.end(), n2);
     BOOST_CHECK_EQUAL(*p, n2);
 
