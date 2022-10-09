@@ -2,6 +2,8 @@
 #define FITNESS_FUNCTIONS_HPP
 
 #include <vector>
+#include <cmath>
+#include <iostream>
 
 float fitness_sum_all(std::vector<float>);
 
