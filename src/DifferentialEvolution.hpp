@@ -7,7 +7,6 @@
 
 #define RANDOM_THREAD_LOCAL
 
-
 #ifdef RANDOM_LOCAL
 auto Random = effolkronium::random_local{ };
 #endif
@@ -41,18 +40,19 @@ class DifferentialEvolution {
 
         std::vector<std::vector<float>> m_population;
         std::vector<int> m_individualIdxs;
+        std::vector<float> m_fitnessValues;
         std::vector<int> m_geneIdxs;
 
     public:
         DifferentialEvolution(float (*fitness_func)(std::vector<float>), int individual_len);
-        std::vector<float> optimize();
-
+        
         float (*m_fitness)(std::vector<float>);
         int getPopulationLen();
         int getIndividualLen();
         int getNumberOfGenerations();
 
         // DE methods
+        std::vector<float> optimize();
         void initializePopulation();
         void performGeneration();
         void performGenerationOnIndividual(int individualIdx);
