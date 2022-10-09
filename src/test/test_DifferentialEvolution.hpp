@@ -10,4 +10,7 @@
 #include "../DifferentialEvolution.hpp"
 #include "../utils/fitnessFunctions.hpp"
 
+
+DifferentialEvolution* getDE();
+
 #endif /* TEST_DIFFEERENTIAL_EVOLUTION_HPP */
