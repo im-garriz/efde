@@ -19,10 +19,10 @@ BOOST_AUTO_TEST_CASE(test_trivial_all_0_problem_converges) {
 
     std::cout << std::endl << result_fitness << std::endl;
     
-    BOOST_CHECK_CLOSE(result_fitness, 0.f, 0.01f);
+    BOOST_CHECK_SMALL(result_fitness, 0.0001f);
   
-    //for (auto it=result.begin(); it!=result.end(); it++)
-    //    BOOST_CHECK_CLOSE(*it, 0.f, 0.001f);
+    for (auto it=result.begin(); it!=result.end(); it++)
+        BOOST_CHECK_SMALL(*it, 0.0001f);
 }
 
 BOOST_AUTO_TEST_SUITE_END()
