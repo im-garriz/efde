@@ -4,6 +4,7 @@
 #include <vector>
 #include "utils/random.hpp"
 #include <iostream> // DEL
+#include<thread>
 
 #define RANDOM_THREAD_LOCAL
 
@@ -60,6 +61,7 @@ class DifferentialEvolution {
         void mutateIndividual(int individualIdx, std::vector<float>* mutated);
         void mateIndividual(int individualIdx, std::vector<float>* mutated);
         void selectDescendant(int individualIdx, std::vector<float>* variatedIndividual);
+        bool allThreadsFinished();
 
 };
 

@@ -6,6 +6,7 @@
 
 #include <vector>
 #include <iostream>
+#include <chrono>
 
 #include "../src/DifferentialEvolution.hpp"
 #include "../src/utils/fitnessFunctions.hpp"

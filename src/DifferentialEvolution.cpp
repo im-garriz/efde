@@ -17,13 +17,14 @@ DifferentialEvolution::DifferentialEvolution(float (*fitness_func)(std::vector<f
 std::vector<float> DifferentialEvolution::optimize() {
 
     initializePopulation();
+    std::cout << "Population succesfully initialized\n";
 
     for(int i=0; i<m_nOfGenerations; ++i) {
         performGeneration();
         auto bestFitness = *std::min_element(std::begin(m_fitnessValues), std::end(m_fitnessValues));
 
-        if (i % 1000 == 0)
-            std::cout << "Gen " << i+1 << " finished. " << "Best fitness: " << bestFitness << std::endl;
+        if (i % 1000 == 0 || i == m_nOfGenerations-1)
+            std::cout << "Gen " << i << " finished. " << "Best fitness: " << bestFitness << std::endl;
     }
 
     int bestIndIdx = 0;
@@ -85,9 +86,19 @@ void DifferentialEvolution::initializePopulation() {
 
 void DifferentialEvolution::performGeneration() {
 
+    //https://www.educative.io/blog/modern-multithreading-and-concurrency-in-cpp
+    std::vector<std::thread> threads;
+
     // Multithreading
     for(int i=0; i<m_individualLen; ++i) {
-        performGenerationOnIndividual(i);
+
+        //auto th = 
+        //auto thread = std::thread( &DifferentialEvolution::performGenerationOnIndividual, this, i );
+        threads.push_back(std::thread( [this, i] { performGenerationOnIndividual(i); } ));
+        //th.detach();
+        threads[threads.size()-1].detach();
+        
+        //performGenerationOnIndividual(i);
     }
 }
 
@@ -96,8 +107,11 @@ void DifferentialEvolution::performGenerationOnIndividual(int individualIdx) {
     std::vector<float> variatedIndividual;
     variatedIndividual.reserve(m_individualLen);
 
+    //variateIndividual(individualIdx, &variatedIndividual);
+
     mutateIndividual(individualIdx, &variatedIndividual);
     mateIndividual(individualIdx, &variatedIndividual);
+
     selectDescendant(individualIdx, &variatedIndividual);
 }
 
@@ -145,8 +159,16 @@ void DifferentialEvolution::selectDescendant(int individualIdx, std::vector<floa
     // MINIMIZATION
     if (variatedIndividualsFitness < m_fitnessValues[individualIdx]) {
         // MUTEX
-        m_population[individualIdx] = *variatedIndividual;
-        m_fitnessValues[individualIdx] = variatedIndividualsFitness;
+        if (allThreadsFinished()) {
+            m_population[individualIdx] = *variatedIndividual;
+            m_fitnessValues[individualIdx] = variatedIndividualsFitness;
+        }
+        
     }
         
+}
+
+
+bool DifferentialEvolution::allThreadsFinished() {
+    return true;
 }
